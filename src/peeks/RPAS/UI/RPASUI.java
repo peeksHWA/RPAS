@@ -1036,6 +1036,7 @@ public class RPASUI extends javax.swing.JFrame {
         
         boolean bReturn = true;
         
+        
         // load properties file
         RPASProperties configProperties = new RPASProperties( "config.properties");
         
