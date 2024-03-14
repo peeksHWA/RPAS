@@ -1003,7 +1003,7 @@ public class RPASUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        logger.error("Creating main frame");
+        logger.error("Creating mainframe");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
