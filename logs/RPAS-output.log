@@ -1,0 +1,10 @@
+2019-12-15 13:55:12.690 [main] ERROR peeks.RPAS.UI.RPASUI - Creating mainframe
+2019-12-15 13:55:13.998 [AWT-EventQueue-0] ERROR peeks.RPAS.UI.RPASUI - Loaded properties file
+2019-12-15 13:55:14.006 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - JDBC driver instance created
+2019-12-15 13:55:14.006 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Attempting ot connect to DB with conStr =jdbc:mysql://localhost:3306/RPAS user=cparkinson pwd = Emmab_01
+2019-12-15 13:55:14.254 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Succesffuly connected to DB
+2019-12-15 13:55:14.359 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2019-12-15 13:55:14.367 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2019-12-15 13:55:14.372 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2019-12-15 14:10:55.138 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2019-12-15 14:10:58.503 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 9
