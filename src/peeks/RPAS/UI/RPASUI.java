@@ -1053,7 +1053,7 @@ public class RPASUI extends javax.swing.JFrame {
             dbConnection = new DatabaseConnection( dbParams );
             if ( !dbConnection.connect() )
             {    
-                logger.error("Failed to connect to db");
+                logger.error("Failed to connect to database");
                 JOptionPane.showMessageDialog( this, "Failed to connect to Database", //
                                "Startup Error",                           //
                                JOptionPane.ERROR_MESSAGE);
