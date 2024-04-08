@@ -22,7 +22,7 @@ import peeks.RPAS.UI.RPASUI;
 public class RPASProperties 
 {
     
-    // public vars
+    // public vars - canr be bothered with set and gets
     public String dbConnectionStr = "";
     public String dbJDBCdriver = "";
     public String dbUser = "";
