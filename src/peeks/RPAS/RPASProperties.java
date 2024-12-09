@@ -28,6 +28,7 @@ public class RPASProperties
     public String dbUser = "";
     public String dbPwd = "";
     public String jdbcDriver = "";
+    public String dbList = "";
     
     // private member vars
     private InputStream inputStream;
@@ -73,6 +74,7 @@ public class RPASProperties
             dbUser = prop.getProperty("db_user");
             dbPwd = prop.getProperty("db_pwd");
             jdbcDriver = prop.getProperty("jdbc_driver");
+            dbList = prop.getProperty("dbListFile");
             
             RPASUI.logger.error("Loaded properties file");
         } 

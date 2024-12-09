@@ -4,8 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/RPAS/UI/RPASUI.java</file>
-            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/database/DatabaseConnectionParams.java</file>
-            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/config.properties</file>
+            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/RPAS/DatabaseConfig.java</file>
+            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/RPAS/UI/MenuListener.java</file>
+            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/RPAS/dataobjects/DatabaseData.java</file>
+            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/RPAS/RPASProperties.java</file>
+            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/RPAS/DatabaseConfigList.java</file>
+            <file>file:/Users/peeks/NetBeansProjects/RPAS/src/peeks/database/DatabaseConnection.java</file>
         </group>
     </open-files>
 </project-private>

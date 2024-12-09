@@ -9,6 +9,10 @@ import java.awt.Point;
 import java.awt.print.PrinterException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +29,9 @@ import peeks.RPAS.dataobjects.Property;
 import peeks.RPAS.dataobjects.RentalIncome;
 import peeks.RPAS.dataobjects.TaxBand;
 import peeks.RPAS.dataobjects.TaxYearSummary;
+import peeks.RPAS.DatabaseConfig;
+import peeks.RPAS.DatabaseConfigList;
+import peeks.RPAS.DatabaseConfigManager;
 
 
 
@@ -44,6 +51,8 @@ public class RPASUI extends javax.swing.JFrame {
     public static final int     SUMMARY_TAB                     = 3;
     public static final int     SUMMARY_TABLE_DATE_COL          = 0;
     public static final String  ALL                             = "ALL";
+    public static final String  DB_MENU_TITLE                   = "DataBase";
+    
     
     // TABLE FIELD SIZES
     public static final int     TBL_EXP_DESC_LEN                = 256;
@@ -62,6 +71,9 @@ public class RPASUI extends javax.swing.JFrame {
     public DatabaseConnection dbConnection = null;
     public DatabaseData dbData = null;
     private boolean bUIFrameworkInitialised = false;
+    
+    //peeks support for Database menu item data - db sources loaded from JSON
+    DatabaseConfigList dbList = null;
     
     /**
      * Creates new form RPASUI
@@ -84,6 +96,37 @@ public class RPASUI extends javax.swing.JFrame {
         
         // CENTRALISE WINDOW
         setLocationRelativeTo(null);
+        
+        
+        /////////////////////////////
+        // we have loaded jSON file with db target list - if it was found and valid
+        // now need to dynaically add a menu item for entry in the JSON file
+        /////////////////////////////
+        // create menu bar
+        JMenuBar menuBar = new JMenuBar();
+        this.setJMenuBar( menuBar );
+        JMenu dbMenu = new JMenu( DB_MENU_TITLE );
+        
+        // iterate thru list of db tagret created from jOSN file and add a menu item or each
+        JMenuItem menuItem = null;
+        DatabaseConfig dbConfig = null;
+        int iNumItems = dbList.getListCount();
+        for (int i = 0; i < iNumItems; i++ ) 
+        {
+            dbConfig = dbList.getConfigItem( i );
+            menuItem = new JMenuItem( dbConfig.getUsername() + "@" + dbConfig.getHost() + ":" + dbConfig.getDatabaseName() );
+            dbMenu.add( menuItem );
+            menuItem.addActionListener(new MenuListener( this, menuBar, i ));
+            
+        }
+        
+        // add menu bar to frame
+        menuBar.add(dbMenu);
+        
+        /////////////////////////////
+        // peeks end test crap
+        /////////////////////////////
+        
         
         //add windows listener so we cna detect frame event, close, minimise, maximise, etc
         addWindowListener(new RPASWindowListener());
@@ -355,11 +398,19 @@ public class RPASUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(tabbedFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 1341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
+                .addGap(186, 186, 186)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(107, 107, 107)
                 .addComponent(propertyLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -373,23 +424,15 @@ public class RPASUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(taxYearCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
-                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(tabbedFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 1341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(39, 39, 39)
                 .addComponent(tabbedFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -406,7 +449,7 @@ public class RPASUI extends javax.swing.JFrame {
                     .addComponent(printButton)
                     .addComponent(exitButton)
                     .addComponent(updateButton))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         tabbedFrame.getAccessibleContext().setAccessibleName("Mortgage");
@@ -1044,6 +1087,39 @@ public class RPASUI extends javax.swing.JFrame {
         {
             configProperties.getPropValues();
             
+            // read DB JSON file to get list of possible db endpoints
+            // Read the list back from the JSON file
+            // returns an empty list if problme loading or parsing file
+            List<DatabaseConfig> loadedDbConfigList = DatabaseConfigManager.readFromJson( configProperties.dbList);
+            //System.out.println("Loaded Configs from JSON:");
+            if ( !loadedDbConfigList.isEmpty() )
+            {
+                System.out.println( "Successfully loaded db list JSON file : " + configProperties.dbList);
+                
+                // create object to store list - member var
+                dbList = new DatabaseConfigList( loadedDbConfigList );
+                
+                // iteertae thru list a set active object based on first item that has the word true in active field
+                int iCount = 0;
+                for (DatabaseConfig config : loadedDbConfigList) 
+                {
+                    
+                    System.out.println(config);
+                    if ( config.getActive().equals( DatabaseConfig.ACTIVE ) )
+                    {
+                            // found first active param in jSON so exit loop
+                            dbList.setActive( iCount );
+                            System.out.println( "setting active db config object from JSON : " + iCount );       
+                    }
+                            
+                    iCount++;
+                            
+                    System.out.println(config);
+                }
+            }
+            else
+                System.out.println( "No JSON config found. File empty or missing" );
+            
             DatabaseConnectionParams dbParams = new DatabaseConnectionParams( configProperties.dbJDBCdriver,    //
                                                                               configProperties.dbConnectionStr, //
                                                                               configProperties.dbUser,          //
@@ -1084,6 +1160,10 @@ public class RPASUI extends javax.swing.JFrame {
         
         try
         {
+            
+            // remove any exuisting vals - wil lhave when channge DBs while live
+            taxYearCombo.removeAllItems();
+                    
             ArrayList aTaxYears = dbData.getTaxYears();
             int iTaxCount = aTaxYears.size();
             TaxYear taxYear = null;
@@ -1110,6 +1190,10 @@ public class RPASUI extends javax.swing.JFrame {
         
         try
         {
+            
+            // remove any exuisting vals - wil lhave when channge DBs while live
+            comboTaxBand.removeAllItems();
+            
             ArrayList aTaxBands = dbData.getTaxBands();
             int iTaxCount = aTaxBands.size();
             TaxBand taxRate = null;
@@ -1136,6 +1220,10 @@ public class RPASUI extends javax.swing.JFrame {
         
         try
         {
+            
+            // remove any exuisting vals - wil lhave when channge DBs while live
+            propertyCombo.removeAllItems();
+            
             ArrayList aProperty = dbData.getProperties();
             int iPropCount = aProperty.size();
             Property prop = null;
@@ -1569,6 +1657,71 @@ public class RPASUI extends javax.swing.JFrame {
         
         return bReturn;
     }
+    
+    // reload all for DB and refresh all views
+    public boolean changeDbandUpdateView( int iDbMenuItem )
+    {
+
+      boolean bReturn = true;  
+
+      // get db JSON loaded object that relates to index
+      DatabaseConfig dbConfig = dbList.getConfigItem(iDbMenuItem);
+      
+      // check got config form JSON file
+      if ( dbConfig == null )
+      {    
+          logger.error("Could not fing valid DB config object to connect to Db" );
+          return false;
+      }
+
+      DatabaseConnectionParams dbParams = new DatabaseConnectionParams( dbConfig.getJdbcDriver(),    //
+                                                                        dbConfig.getConnectionString(), //
+                                                                        dbConfig.getUsername(),          //
+                                                                        dbConfig.getPassword());
+
+      System.out.println( "Attempting to connect to : ");dbParams.toString();
+      // creat to db and connect
+      dbConnection = new DatabaseConnection( dbParams );
+      if ( !dbConnection.connect() )
+      {    
+          logger.error("Failed to connect to database :" + dbParams.toString() );
+          JOptionPane.showMessageDialog( this, "Failed to connect to Database", //
+                         "Startup Error",                           //
+                         JOptionPane.ERROR_MESSAGE);
+          bReturn = false;
+      }
+      else
+      {
+          // load the data
+          dbData = new DatabaseData();
+          dbConnection.loadDatabaseData( dbData );
+          dbConnection.disConnect();
+          logger.info("Successfully to connected to database :" + dbParams.toString()+ " and loaded data");
+      }           
+      
+      // ok build data views
+      // populate UI stuff with DB data
+      popultaeTaxCombo();
+      propertyCombo();
+      populateTaxRateCombo();
+      populateIncomeTable(); 
+      populateMortgageTable();
+      populateExepnsesTable();
+
+      // lets get the current value of the tax year box
+      String selTaxYear  = (String)taxYearCombo.getSelectedItem();
+      String selProp  = (String)propertyCombo.getSelectedItem();
+      int iTaxID = dbData.getMatchingTaxYearID( selTaxYear );
+      int iPropID = dbData.getMatchingPropertyID( selProp );
+      int iTaxRate = Integer.parseInt( (String)comboTaxBand.getSelectedItem());
+      // int iTaxRate = 40;
+
+      dbData.buildSummaryData( iTaxID, iPropID, iTaxRate );
+
+      populateSummaryTable();
+
+      return bReturn;
+  }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

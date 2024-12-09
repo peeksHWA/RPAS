@@ -1,37 +1,17 @@
-2024-05-27 15:46:26.114 [main] ERROR peeks.RPAS.UI.RPASUI - Creating mainframe
-2024-05-27 15:46:26.551 [AWT-EventQueue-0] ERROR peeks.RPAS.UI.RPASUI - Loaded properties file
-2024-05-27 15:46:26.554 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - JDBC driver instance created
-2024-05-27 15:46:26.554 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Attempting ot connect to DB with conStr =jdbc:mysql://192.168.8.139:3306/RPAS user=cparkinson pwd = Emmab_01
-2024-05-27 15:46:27.159 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Succesffuly connected to DB
-2024-05-27 15:46:27.247 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
-2024-05-27 15:46:27.250 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
-2024-05-27 15:46:27.251 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
-2024-05-27 15:46:33.613 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 15
-2024-05-27 15:46:37.556 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - ADD button prressed - creating new Add Expense Dlg
-2024-05-27 15:47:25.629 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Item date being checked against tax years = 23/05/2024
-2024-05-27 15:47:25.631 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Matching tax year ID for 23/05/24 is 15
-2024-05-27 15:47:25.633 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - All Expense fields valid so attempting to create new expense record
-2024-05-27 15:47:25.633 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - 
-EXPENSE RECORD :
-ID = -1
-TAX_YEAR = 2024-2025
-Date = 23-05-2024
-DESCRIPTION = New toliet for downstairs bog. Old one cracked and leaking
-SUPPLIER = West Coast Plumbing
-VALUE = 192.0
-RECEIPT = Y
-RECEIPT_LINK = 
-COMMENT = 
-PROPERTY_ID = 1
-TAX_YEAR_ID = 15
-
-2024-05-27 15:47:25.634 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - JDBC driver instance created
-2024-05-27 15:47:25.634 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Attempting ot connect to DB with conStr =jdbc:mysql://192.168.8.139:3306/RPAS user=cparkinson pwd = Emmab_01
-2024-05-27 15:47:25.713 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Succesffuly connected to DB
-2024-05-27 15:47:25.714 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - SQL EXECUTE :INSERT INTO Expenses ( TAX_YEAR, DATE, DESCRIPTION, SUPPLIER, VALUE, RECEIPT, RECEIPT_LINK, COMMENT, PROPERTY_ID, TAX_YEAR_ID )VALUES ('2024-2025','2024-05-23 00:00:00','New toliet for downstairs bog. Old one cracked and leaking','West Coast Plumbing',192.0,'Y','','',1,15);
-2024-05-27 15:47:25.836 [AWT-EventQueue-0] ERROR peeks.RPAS.UI.RPASUI - UPDATE COUNT = 1 on SQL :: INSERT INTO Expenses ( TAX_YEAR, DATE, DESCRIPTION, SUPPLIER, VALUE, RECEIPT, RECEIPT_LINK, COMMENT, PROPERTY_ID, TAX_YEAR_ID )VALUES ('2024-2025','2024-05-23 00:00:00','New toliet for downstairs bog. Old one cracked and leaking','West Coast Plumbing',192.0,'Y','','',1,15);
-2024-05-27 15:47:25.844 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - New expense added - reload database object and repopulate grid controls
-2024-05-27 15:47:25.845 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - JDBC driver instance created
-2024-05-27 15:47:25.845 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Attempting ot connect to DB with conStr =jdbc:mysql://192.168.8.139:3306/RPAS user=cparkinson pwd = Emmab_01
-2024-05-27 15:47:25.910 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Succesffuly connected to DB
-2024-05-27 15:47:25.926 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 15
+2024-12-09 19:41:12.726 [main] ERROR peeks.RPAS.UI.RPASUI - Creating mainframe
+2024-12-09 19:41:20.873 [AWT-EventQueue-0] ERROR peeks.RPAS.UI.RPASUI - Loaded properties file
+2024-12-09 19:41:21.248 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - JDBC driver instance created
+2024-12-09 19:41:21.248 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Attempting ot connect to DB with conStr =jdbc:mysql://192.168.1.230:3306/RPAS user=root pwd = Emmab_01
+2024-12-09 19:41:21.738 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Succesffuly connected to DB
+2024-12-09 19:41:22.062 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2024-12-09 19:41:22.078 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2024-12-09 19:41:22.080 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2024-12-09 19:41:33.958 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - JDBC driver instance created
+2024-12-09 19:41:33.958 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Attempting ot connect to DB with conStr =jdbc:mysql://192.168.1.230:3306/RPAS user=root pwd = Emmab_01
+2024-12-09 19:41:33.975 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Succesffuly connected to DB
+2024-12-09 19:41:34.053 [AWT-EventQueue-0] INFO  peeks.RPAS.UI.RPASUI - Successfully to connected to database :peeks.database.DatabaseConnectionParams@1dc4f7c9 and loaded data
+2024-12-09 19:41:34.053 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = -1
+2024-12-09 19:41:34.055 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2024-12-09 19:41:34.057 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2024-12-09 19:41:34.057 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
+2024-12-09 19:41:34.059 [AWT-EventQueue-0] DEBUG peeks.RPAS.UI.RPASUI - Called BuildSummaryData. Selcted taxID = 1
