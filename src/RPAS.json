@@ -1,0 +1,38 @@
+[
+    {
+        "databaseName": "RPAS",
+        "connectionString": "jdbc:mysql://192.168.1.230:3306/RPAS",
+        "host": "192.168.1.230",
+        "username": "root",
+        "password": "Emmab_01",
+        "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+        "active": "true"
+    },
+    {
+        "databaseName": "RPAS",
+        "connectionString": "jdbc:mysql://192.168.1.11:3306/RPAS",
+        "host": "192.168.1.11",
+        "username": "cparkinson",
+        "password": "Emmab_01",
+        "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+        "active": "false"
+    },
+    {
+        "databaseName": "RPAS-TEST",
+        "connectionString": "jdbc:mysql://192.168.1.230:3306/RPAS-TEST",
+        "host": "192.168.1.230",
+        "username": "root",
+        "password": "Emmab_01",
+        "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+        "active": "false"
+    },
+    {
+        "databaseName": "RPAS-TEST",
+        "connectionString": "jdbc:mysql://192.168.1.11:3306/RPAS-TEST",
+        "host": "192.168.1.11",
+        "username": "cparkinson",
+        "password": "Emmab_01",
+        "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+        "active": "false"
+    }
+]
